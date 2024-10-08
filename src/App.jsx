@@ -1,7 +1,95 @@
+import React from "react";
+import Homepage from "./routes/homepage/homepage.jsx";
+import Layout from "./routes/layout/layout.jsx";
+import ListPage from "./routes/listPage/listPage.jsx";
+import SinglePage from "./routes/singlePage/singlePage.jsx";
+import ProfilePage from "./routes/profilePage/profilePage.jsx";
+
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Route,
+  Link,
+} from "react-router-dom";
+
 function App() {
+
+
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: (
+        <Layout />
+      ),
+      children: [
+       {path: "/",
+        element: <Homepage />
+        },
+        {path: "/list",
+          element: <ListPage />
+          },
+          {path: "/:id",
+            element: <SinglePage />
+            },
+            {path: "/profile",
+              element: <ProfilePage />
+              },
+      
+
+      ]
+    },
+    
+  ]);
+
+  
   return (
-    <div>Hello World</div>
+    
+
+    <RouterProvider router={router} />
   )
 }
 
 export default App
+
+
+
+
+// import React from "react";
+// import Homepage from "./routes/homepage/homepage.jsx";
+// import Layout from "./routes/layout/layout.jsx";
+// import ListPage from "./routes/listPage/listPage.jsx";
+// import SinglePage from "./routes/singlePage/singlePage.jsx";
+
+// import {
+//   createBrowserRouter,
+//   RouterProvider,
+//   Route,
+//   Link,
+// } from "react-router-dom";
+
+// function App() {
+//   const router = createBrowserRouter([
+//     {
+//       path: "/",
+//       element: <Layout />,
+//       children: [
+//         {
+//           path: "/", 
+//           element: <Homepage />,
+//         },
+//         {
+//           path: "/list", 
+//           element: <ListPage />,
+//         },
+//         {
+//           path: "/:id", 
+//           element: <SinglePage />,
+//         },
+//       ],
+//     },
+//   ]);
+
+//   return <RouterProvider router={router} />;
+// }
+
+// export default App;
